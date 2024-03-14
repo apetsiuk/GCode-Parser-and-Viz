@@ -14,7 +14,8 @@ This repository contains scripts for Blender (checked with 3.4.1 version) that a
 You can manually set light sources, camera settings, background images, [HDRI maps](https://hdrmaps.com/freebies/), and materials. Alternatively, you can run certain scripts (***"scene_setup_scripts"*** folder) to automate some parts of this process.
 
 ### Run in Blender
-<img align="left" width="300" alt="promo-gif" src="_images/blender_scripting_tab.png"/>
+<img align="left" width="400" alt="promo-gif" src="_images/blender_scripting_tab.png"/>
+
 To run it in Blender: (1) copy the code from ***"blender_scripts"*** folder, (2) paste in a new script created in the "Scripting" tab, (3) update the "TODO" sections in the code, and (4) hit the "Run" button.
 
 
