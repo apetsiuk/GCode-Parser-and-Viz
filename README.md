@@ -1,17 +1,21 @@
 # G-code parsing and visualization in Blender
 
+This repository contains scripts for Blender (checked with 3.4.1 version) that allow you to parse and visualize single-material `.gcode` files generated with [PrusaSlicer](https://www.prusa3d.com/en/page/prusaslicer_424/).
+
+- Background: Motivated by Heinz Loepmeier's ["Blender G-Code Importer"](https://github.com/Heinz-Loepmeier/Blender-Gcode-Import).
+- For details, please refer to the **[wiki](https://github.com/apetsiuk/GCode-Parser-and-Viz/wiki)** page.
+
 | Render |  Viewport  |
 | :---:   | :---: |
 | <img height="350" src="_images/render_sample_1.png"/> | <img height="350" src="_images/render_sample_2.png"/>  |
 
-\*Model: ["Cyberpunk Robots x6" by CharlieVet](https://www.thingiverse.com/thing:4092671) 
+*\*Model: ["Cyberpunk Robots x6" by CharlieVet](https://www.thingiverse.com/thing:4092671)*
 
 <br />
 
-This repository contains scripts for Blender (checked with 3.4.1 version) that allow you to parse and visualize single-material `.gcode` files generated with [PrusaSlicer](https://www.prusa3d.com/en/page/prusaslicer_424/).
+---
 
-- Background: Based on Heinz Loepmeier's ["Blender G-Code Importer"](https://github.com/Heinz-Loepmeier/Blender-Gcode-Import).
-- For details, please refer to the [wiki](https://github.com/apetsiuk/GCode-Parser-and-Viz/wiki) page.
+
 
 ### G-code parsing
 
