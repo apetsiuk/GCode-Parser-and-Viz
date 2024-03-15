@@ -2,7 +2,7 @@
 
 | Render |  Viewport  |
 | :---:   | :---: |
-| <img height="200" src="_images/render_sample_1.png"/> | <img height="200" src="_images/render_sample_2.png"/>  |
+| <img height="350" src="_images/render_sample_1.png"/> | <img height="350" src="_images/render_sample_2.png"/>  |
 
 <br />
 
