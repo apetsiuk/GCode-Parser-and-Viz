@@ -5,9 +5,9 @@ This repository contains scripts for Blender (checked with 3.4.1 version) that a
 - Background: Motivated by Heinz Loepmeier's ["Blender G-Code Importer"](https://github.com/Heinz-Loepmeier/Blender-Gcode-Import).
 - **For details, please refer to the [wiki](https://github.com/apetsiuk/GCode-Parser-and-Viz/wiki) page.**
 
-| Parsed g-code layer |  Details  |
+| Render |  Viewport  |
 | :---:   | :---: |
-| <img height="350" src="_images/r.png"/> | <img height="350" src="_images/r.png"/>  |
+| <img height="350" src="_images/render_sample_1.png"/> | <img height="350" src="_images/render_sample_2.png"/>  |
 
 *\*Model: ["Cyberpunk Robots x6" by CharlieVet](https://www.thingiverse.com/thing:4092671)*
 
@@ -15,9 +15,9 @@ This repository contains scripts for Blender (checked with 3.4.1 version) that a
 
 ### G-code parsing
 
-| Render |  Viewport  |
+| Parsed g-code layer |  Details  |
 | :---:   | :---: |
-| <img height="350" src="_images/render_sample_1.png"/> | <img height="350" src="_images/render_sample_2.png"/>  |
+| <img height="350" src="_images/r.png"/> | <img height="350" src="_images/r.png"/>  |
 
 ### Setup Blender environment
 You can manually set light sources, camera settings, background images, [HDRI maps](https://hdrmaps.com/freebies/), and materials. Alternatively, you can run certain scripts (***"scene_setup_scripts"*** folder) to automate some parts of this process.
