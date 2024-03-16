@@ -13,6 +13,13 @@ This repository contains scripts for Blender (checked with 3.4.1 version) that a
 
 ---
 
+### PrusaSlicer setup
+
+Put the `;LAYER_Z_HEIGHT=[layer_z]` line in the "Before layer change G-code" in PrusaSlicer.
+
+<img src="_images/prusaslicer_setup.png"/>
+
+
 ### G-code parsing
 
 | Parsed g-code layer |  Details  |
