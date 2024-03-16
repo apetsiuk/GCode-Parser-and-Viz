@@ -32,7 +32,9 @@ You can manually set light sources, camera settings, background images, [HDRI ma
 ### Run in Blender
 <img align="left" width="500" src="_images/blender_scripting_tab.png"/>
 
-To run it in Blender: (1) copy the code from the ***"blender_scripts"*** folder, (2) paste in a new script created in the "Scripting" tab, (3) update the "TODO" sections in the code, and (4) hit the "Run" button.<br />
+To run it in Blender: (1) copy the code from the ***"blender_scripts"*** folder, (2) paste in a new script created in the "Scripting" tab, (3) update the "TODO" sections in the code, and (4) hit the "Run" button.
+
+<br />
 
 When you run a script, Blender becomes unresponsive. Therefore, switch the system console window to be able to “Ctrl+C” (break) processing in case of any errors.
 
