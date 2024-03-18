@@ -1,0 +1,1 @@
+Place an HDRI map (if any) in this folder.

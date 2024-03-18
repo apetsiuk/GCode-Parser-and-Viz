@@ -1,0 +1,1 @@
+Place an image of a print bed (if any) in this folder.
