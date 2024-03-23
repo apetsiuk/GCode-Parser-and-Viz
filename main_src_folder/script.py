@@ -647,9 +647,107 @@ def animate_layers():
             so.pass_index = 128
     
 
+def del_collection(coll):
+    for c in coll.children:
+        del_collection(c)
+    bpy.data.collections.remove(coll,do_unlink=True)
+    
+    
+# ---- BED Texture ----
+bed_textire_list = []
+for filename in glob.glob('C:/.../GCODE_VIZ_BLENDER/_FOR_TRAINING/_beds/*.*'):
+    bed_textire_list.append(filename)
+    
+# ---- HDRI Texture ----
+hdri_textire_list = []
+for filename in glob.glob('C:/.../GCODE_VIZ_BLENDER/_FOR_TRAINING/_environments/*.exr'):
+    hdri_textire_list.append(filename)
 
 
-process_layers()
+#--------------------------------------------------
+keyframe_runner = 1
+for i in range(len(bed_textire_list)): # BED Texture
+    bpy.ops.import_image.to_plane(shader='SHADELESS', files=[{'name':bed_textire_list[i]}])
+    bed_name = {'name':bed_textire_list[i]}["name"]
+    print('BED_NAME=',bed_name)
+    # whole file path - ".jpg"
+    bed_name = bed_name[len('C:/.../GCODE_VIZ_BLENDER/_FOR_TRAINING/_beds/'):-4]
+
+    #s_bed = bpy.data.collections['Collection'].objects[str(bed_name)]
+    s_bed = bpy.data.objects[str(bed_name)]
+    s_bed.select_set(True)
+    bpy.context.view_layer.objects.active = s_bed
+    so = bpy.context.active_object
+    # set coordinates and scale
+    so.location[0] = random.randint(90, 150)+0.1
+    so.location[1] = random.randint(80, 140)+0.1
+    so.location[2] = 0
+    
+    #so.location[2] = -600
+    #so.location[2] = -600
+    #so.location[2] = -600
+    
+    so.rotation_euler[0] = 0 # radians (?)
+    so.rotation_euler[2] = random.randint(0, 200)/100
+    #so.scale = (190,190,190)
+    so.scale = (250,250,250)
+    s_bed.select_set(False)
+    
+        
+    for j in range(len(hdri_textire_list)): # HDRI Env.
+        keyframe_runner += 1
+        C = bpy.context
+        scn = C.scene
+        # Get the environment node tree of the current scene
+        node_tree = scn.world.node_tree
+        tree_nodes = node_tree.nodes
+        # Clear all nodes
+        tree_nodes.clear()
+        # Add Background node
+        node_background = tree_nodes.new(type='ShaderNodeBackground')
+        # Add Environment Texture node
+        node_environment = tree_nodes.new('ShaderNodeTexEnvironment')
+        # Load and assign the image to the node property
+        node_environment.image = bpy.data.images.load(hdri_textire_list[j]) # Relative path
+        node_environment.location = -300,0
+        # Add Output node
+        node_output = tree_nodes.new(type='ShaderNodeOutputWorld')   
+        node_output.location = 200,0
+        # Link all nodes
+        links = node_tree.links
+        link = links.new(node_environment.outputs["Color"], node_background.inputs["Color"])
+        link = links.new(node_background.outputs["Background"], node_output.inputs["Surface"])
+        
+        #---------------- ANIMATION ----------------
+        for m in range(1,len(parser.layers)-232):
+            verts, edges, props = segments_to_meshdata(parser.layers[m])
+            print('-> verts and edges for L= ',m)
+            if(len(edges)>0):
+                obj_from_pydata('layer_'+str(m),verts,edges,True,"Layers")
+    
+        LINE_HEIGHT = 0.26
+        process_layers()
+        animate_layers(keyframe_runner*48) # 333/25 = 13.32
+        #-----------------------------------------
+        
+        # delete all the layers (with keyframes) after rendering
+        del_collection(bpy.data.collections["Layers"])
+        # end of j (HDRI Env.)
+        
+
+    sacrificial_cube = bpy.data.collections['Collection'].objects['Cube']
+    sacrificial_cube.select_set(False)
+    # delete bed texture
+    bpy.data.objects[str(bed_name)].select_set(True) # Blender 2.8x
+    # MAKE SURE YOU DESELECTED ALL OTHER OBJECTS
+    bpy.ops.object.delete()
+    # end of i (BED Texture)
+#--------------------------------------------------
+
+
+#***
+#process_layers()
+#***
 print('>>>>>>>>>>>>>>>> DONE process_layers() <<<<<<<<<<<<<<<<')
 #camera_debug()
 #animate_layers()
